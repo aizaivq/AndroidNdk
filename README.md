@@ -14,3 +14,15 @@ user: 指该模块只在user版本下才编译
 eng: 指该模块只在eng版本下才编译
 tests: 指该模块只在tests版本下才编译
 optional:指该模块在所有版本下都编译
+OCAL_SRC_FILES := ndk_test.cpp \
+                1.cpp \
+                2.cpp \
+                src/src1.cpp \
+                src/src2.cpp \
+                src/core/core1.cpp \
+                src/core/core2.cpp
+MY_CPP_LIST := $(wildcard $(LOCAL_PATH)/*.cpp)
+MY_CPP_LIST += $(wildcard $(LOCAL_PATH)/src/*.cpp)
+MY_CPP_LIST += $(wildcard $(LOCAL_PATH)/src/core/*.cpp)
+
+LOCAL_SRC_FILES := $(MY_CPP_LIST:$(LOCAL_PATH)/%=%)
